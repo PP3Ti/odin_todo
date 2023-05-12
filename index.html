@@ -18,6 +18,43 @@
     </div>
     <div class="content">
         <div class="bird"><img src="../src/hummingbird.png" alt="Picture of a hummingbird"></div>
+        <dialog id="addTask">
+            <p class="headline">Add Task</p>
+            <form method="dialog">
+                <label for="title">
+                    <div class="h3">Title</div>
+                    <input type="text" id="title"></input>
+                </label>
+                <label for="dueDate">
+                    <div class="h3">Due date</div>
+                    <input id="dueDate" type="date"></input>
+                </label>
+                <label for="description">
+                    <div class="h3">Description</div>
+                    <textarea id="description"></textarea>
+                </label>
+                <label for="priority" class="prio">
+                    <div class="h3">Priority</div>
+                    <div>
+                        <input type="radio" id="low" value="low" name="priority" checked="checked">
+                        <label for="low">Low</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="medium" value="medium" name="priority">
+                        <label for="medium">Medium</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="high" value="high" name="priority">
+                        <label for="high">High</label>
+                    </div>
+                </label>
+                <div></div>
+                <div class="buttons">
+                    <button id="cancelButton">Cancel</button>
+                    <button type="submit" id="addButton">Add</button>
+                </div>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
