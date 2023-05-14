@@ -16,22 +16,22 @@
         <button id="projects">Projects</button>
         <div class="credit">Website by: PP3Ti</div>
     </div>
-    <div class="content">
+    <div id="content">
         <div class="bird"><img src="../src/hummingbird.png" alt="Picture of a hummingbird"></div>
         <dialog id="addTask">
             <p class="headline">Add Task</p>
-            <form method="dialog">
+            <form id="addTaskForm">
                 <label for="title">
                     <div class="h3">Title</div>
-                    <input type="text" id="title"></input>
+                    <input type="text" id="title" name="title">
                 </label>
                 <label for="dueDate">
                     <div class="h3">Due date</div>
-                    <input id="dueDate" type="date"></input>
+                    <input id="dueDate" type="date" name="date">
                 </label>
                 <label for="description">
                     <div class="h3">Description</div>
-                    <textarea id="description"></textarea>
+                    <textarea id="description" name="description"></textarea>
                 </label>
                 <label for="priority" class="prio">
                     <div class="h3">Priority</div>
@@ -50,8 +50,25 @@
                 </label>
                 <div></div>
                 <div class="buttons">
-                    <button id="cancelButton">Cancel</button>
-                    <button type="submit" id="addButton">Add</button>
+                    <button id="cancelTaskButton">Cancel</button>
+                    <button type="submit" id="addTaskButton">Add</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="addProject">
+            <p class="headline">Add Project</p>
+            <form method="dialog" id="addProjectForm">
+                <label for="title">
+                    <div class="h3">Title</div>
+                    <input type="text">
+                </label>
+                <label for="desctiption">
+                    <div class="h3">Description</div>
+                    <textarea></textarea>
+                </label>
+                <div class="buttons">
+                    <button id="cancelProjectButton">Cancel</button>
+                    <button type="submit" id="addProjectButton">Add</button>
                 </div>
             </form>
         </dialog>
