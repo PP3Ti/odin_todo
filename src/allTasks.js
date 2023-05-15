@@ -1,7 +1,18 @@
 import logic from './index'
 
-function createAllTasks() {
+function createAllTasksTab() {
     const contentDiv = document.getElementById('content')
+    contentDiv.replaceChildren()
+    const addBird = (() => {
+        const contentDiv = document.getElementById('content')
+        const birdDiv = document.createElement('div')
+        birdDiv.classList.add('bird')
+        const birdImg = document.createElement('img')
+        birdImg.src = '../src/hummingbird.png'
+        birdImg.alt = "Picture of a hummingbird"
+        birdDiv.appendChild(birdImg)
+        contentDiv.appendChild(birdDiv)
+    })()
 
     const allTasksContainer = document.createElement('div')
     allTasksContainer.classList.add('allTasksContainer')
@@ -19,6 +30,7 @@ function createAllTasks() {
     const priority = document.createElement('th')
     const done = document.createElement('th')
     const removeTask = document.createElement('th')
+    
     taskTitle.textContent = 'Title'
     description.textContent = 'Description'
     dueDate.textContent = 'Due Date'
@@ -49,7 +61,7 @@ function createAllTasks() {
         priority.textContent = logic.tasks[i].priority
         removeButton.textContent = 'X'
         checkbox.type = 'checkbox'
-
+       
         checkbox.addEventListener('input', () => {
             if (checkbox.checked) {
                 checkbox.parentElement.parentElement.classList.add('taskDone')
@@ -58,13 +70,10 @@ function createAllTasks() {
                 checkbox.parentElement.parentElement.classList.remove('taskDone')
                 logic.tasks[i].done = false
             }
-
-            console.log(logic.tasks[i])
         })
         removeButton.addEventListener('click', () => {
             removeButton.parentElement.parentElement.remove()
             logic.tasks.splice(i, 1)
-            console.log(logic.tasks)
         })
 
         done.classList.add('centered')
@@ -75,6 +84,11 @@ function createAllTasks() {
         
         row.append(title, description, dueDate, priority, done, remove)
 
+        if (logic.tasks[i].done) {
+            checkbox.checked = true
+            checkbox.parentElement.parentElement.classList.add('taskDone')
+        }
+
         displayTasksTable.appendChild(row)
     }
 
@@ -82,4 +96,4 @@ function createAllTasks() {
     contentDiv.appendChild(allTasksContainer)
 }
 
-export default createAllTasks
+export default createAllTasksTab

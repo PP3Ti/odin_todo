@@ -16,7 +16,7 @@ body
     display: grid
     align-items: center
     padding-left: 2rem
-    background: $headercolor
+    background: $herocolor
     font-size: 52px
     margin: 5px 5px 0 5px
     border-radius: 8px
@@ -62,7 +62,7 @@ body
     .bird img
       height: auto
       width: 30dvh
-      position: absolute
+      position: fixed
       right: 0px
       opacity: 0.8
       z-index: 100
@@ -280,11 +280,63 @@ body
       .taskDone
         opacity: 50%
 
+  .allProjectsContainer
+    display: grid
+    grid-template: 120px 1fr / 1fr
+
+    .title
+      width: 50%
+      font-size: 3rem
+      margin: 50px 0 0 50px
+      padding-bottom: 20px
+      box-shadow: 0 2px 0 0 $darkcolor
+      font-weight: bold
+
+    .displayProjectsDiv
+      display: flex
+      flex-wrap: wrap
+      width: 80%
+      gap: 30px
+      margin: 50px
+      margin-top: 20px
+
+      .project
+        position: relative
+        height: 200px
+        width: 300px
+        border: 2px solid $darkcolor
+        border-radius: 8px
+        display: flex
+        flex-direction: column
+        gap: 10px
+        padding: 10px
+
+        .projTitle
+          font-size: 1.4rem
+          font-weight: bold   
+
+        .removeProjButton 
+          position: absolute
+          font-weight: bold
+          padding: 2px 8px
+          font-size: 14px
+          top: 10px
+          right: 10px
+          background: $bgcolor
+          border: 1px solid $darkcolor
+          border-radius: 4px
+
+        .removeProjButton:hover 
+          background: rgba($darkcolor, 0.2)
+
+      .project:hover
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1)
+        transform: scale(1.01)
 
 .addSign
   height: 75px
   width: 75px
-  position: absolute
+  position: fixed
   background: $darkcolor
   bottom: 30px
   right: 30px
@@ -296,4 +348,4 @@ body
   border-radius: 50%
 
 .addSign:hover
-  box-shadow: inset 0 0 30px 0 #263022
+  box-shadow:  0 0 5px 0 #263022
