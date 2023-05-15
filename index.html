@@ -18,6 +18,8 @@
     </div>
     <div id="content">
         <div class="bird"><img src="../src/hummingbird.png" alt="Picture of a hummingbird"></div>
+    </div>
+    <div id="dialogContainer">
         <dialog id="addTask">
             <p class="headline">Add Task</p>
             <form id="addTaskForm">
@@ -57,18 +59,18 @@
         </dialog>
         <dialog id="addProject">
             <p class="headline">Add Project</p>
-            <form method="dialog" id="addProjectForm">
+            <form id="addProjectForm">
                 <label for="title">
                     <div class="h3">Title</div>
-                    <input type="text">
+                    <input type="text" name="title">
                 </label>
                 <label for="desctiption">
                     <div class="h3">Description</div>
-                    <textarea></textarea>
+                    <textarea name="description"></textarea>
                 </label>
                 <div class="buttons">
                     <button id="cancelProjectButton">Cancel</button>
-                    <button type="submit" id="addProjectButton">Add</button>
+                    <button type="button" id="addProjectButton">Add</button>
                 </div>
             </form>
         </dialog>
