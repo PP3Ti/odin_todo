@@ -28,7 +28,14 @@ module.exports = {
         },
         {
           test: /\.(jpg|png|svg|gif)$/,
-          type: 'asset/resource',
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+              },
+            },
+          ],
         },
     ]
   },
