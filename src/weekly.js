@@ -1,5 +1,6 @@
 import { logic, updateLocalStorage }  from './index' 
 import { isThisWeek, parseISO } from 'date-fns'
+import birdLocation from './hummingbird.png'
 
 function createWeeklyTab() {
     // clear content div
@@ -10,7 +11,7 @@ function createWeeklyTab() {
         const birdDiv = document.createElement('div')
         birdDiv.classList.add('bird')
         const birdImg = document.createElement('img')
-        birdImg.src = '../src/hummingbird.png'
+        birdImg.src = birdLocation
         birdImg.alt = "Picture of a hummingbird"
         birdDiv.appendChild(birdImg)
         contentDiv.appendChild(birdDiv)

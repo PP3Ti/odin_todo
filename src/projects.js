@@ -1,4 +1,5 @@
 import { logic, updateLocalStorage } from "./index"
+import birdLocation from './hummingbird.png'
 
 function updateTable() {
     //get DOM element
@@ -113,7 +114,7 @@ function openCurrentProj(e) {
                 const birdDiv = document.createElement('div')
                 birdDiv.classList.add('bird')
                 const birdImg = document.createElement('img')
-                birdImg.src = '../src/hummingbird.png'
+                birdImg.src = birdLocation
                 birdImg.alt = "Picture of a hummingbird"
                 birdDiv.appendChild(birdImg)
                 contentDiv.appendChild(birdDiv)
@@ -159,7 +160,7 @@ function createProjectsTab() {
             const birdDiv = document.createElement('div')
             birdDiv.classList.add('bird')
             const birdImg = document.createElement('img')
-            birdImg.src = '../src/hummingbird.png'
+            birdImg.src = birdLocation
             birdImg.alt = "Picture of a hummingbird"
             birdDiv.appendChild(birdImg)
             contentDiv.appendChild(birdDiv)

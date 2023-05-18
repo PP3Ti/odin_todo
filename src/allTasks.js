@@ -1,4 +1,5 @@
 import { logic, updateLocalStorage } from './index'
+import birdLocation from './hummingbird.png'
 
 function createAllTasksTab() {
     // clear content div
@@ -9,7 +10,7 @@ function createAllTasksTab() {
         const birdDiv = document.createElement('div')
         birdDiv.classList.add('bird')
         const birdImg = document.createElement('img')
-        birdImg.src = '../src/hummingbird.png'
+        birdImg.src = birdLocation
         birdImg.alt = "Picture of a hummingbird"
         birdDiv.appendChild(birdImg)
         contentDiv.appendChild(birdDiv)

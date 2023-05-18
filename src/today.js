@@ -1,5 +1,6 @@
 import { logic, updateLocalStorage }  from './index' 
 import { isToday, parseISO } from 'date-fns'
+import birdLocation from './hummingbird.png'
 
 function createTodayTab() {
     // clear content div
@@ -10,7 +11,7 @@ function createTodayTab() {
         const birdDiv = document.createElement('div')
         birdDiv.classList.add('bird')
         const birdImg = document.createElement('img')
-        birdImg.src = '../src/hummingbird.png'
+        birdImg.src = birdLocation
         birdImg.alt = "Picture of a hummingbird"
         birdDiv.appendChild(birdImg)
         contentDiv.appendChild(birdDiv)
