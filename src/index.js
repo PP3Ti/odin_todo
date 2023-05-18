@@ -1,6 +1,8 @@
 import './styles.sass'
-import {createAllTasksTab} from './allTasks'
-import {createProjectsTab, updateTable} from './projects'
+import { createAllTasksTab } from './allTasks'
+import { createProjectsTab, updateTable } from './projects'
+import { createTodayTab } from './today'
+import { createWeeklyTab } from './weekly'
 
 // get buttons from hero 
 const allTasks = document.getElementById('allTasks')  // main hero buttons
@@ -96,5 +98,8 @@ cancelTaskButton.addEventListener('click', (e) => {
     e.preventDefault()
     addTask.close()
 })
+
+//start on today's tasks
+createTodayTab()
 
 export {logic, updateLocalStorage}

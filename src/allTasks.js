@@ -1,4 +1,4 @@
-import {logic, updateLocalStorage} from './index'
+import { logic, updateLocalStorage } from './index'
 
 function createAllTasksTab() {
     // clear content div

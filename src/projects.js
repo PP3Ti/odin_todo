@@ -1,4 +1,4 @@
-import {logic, updateLocalStorage} from "./index"
+import { logic, updateLocalStorage } from "./index"
 
 function updateTable() {
     //get DOM element
@@ -204,13 +204,9 @@ function createProjectsTab() {
             // remove button deletes DOM element and updates the projects array
             removeProjButton.addEventListener('click', (e) => {
                 e.preventDefault()
+                //remove all tasks of project
+                logic.tasks = logic.tasks.filter(e => e.project !== logic.projects[i].title)
                 removeProjButton.parentElement.remove()
-                //remove all tasks of prject
-                for (let j = 0; j < logic.tasks.length; j++) {
-                    if (logic.projects[i].title == logic.tasks[j].project) {
-                        logic.tasks.splice(j, 1)
-                    }
-                }
                 //remove project from logic
                 logic.projects.splice(i, 1)
                 //re-render page
