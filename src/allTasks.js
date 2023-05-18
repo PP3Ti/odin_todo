@@ -1,4 +1,4 @@
-import logic from './index'
+import {logic, updateLocalStorage} from './index'
 
 function createAllTasksTab() {
     // clear content div
@@ -73,6 +73,7 @@ function createAllTasksTab() {
         removeButton.addEventListener('click', () => {
             removeButton.parentElement.parentElement.remove()
             logic.tasks.splice(i, 1)
+            updateLocalStorage()
         })
         // append elements
         done.classList.add('centered')
@@ -93,4 +94,4 @@ function createAllTasksTab() {
     contentDiv.appendChild(allTasksContainer)
 }
 
-export default createAllTasksTab
+export {createAllTasksTab}

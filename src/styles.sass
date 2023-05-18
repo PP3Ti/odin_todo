@@ -246,58 +246,6 @@ body
       padding-bottom: 20px
       box-shadow: 0 2px 0 0 $darkcolor
       font-weight: bold
-    
-    table
-      margin: 50px
-      align-self: start
-      justify-self: start
-
-      tr
-        box-shadow: 0 1px 0 0 rgba($darkcolor, 0.4)
-
-        th
-          width: 0%
-          white-space: nowrap
-          font-weight: bold
-          font-size: 1.5rem
-          padding: 0
-          margin: 0
-          text-align: start
-          padding-bottom: 10px
-          padding-right: 50px
-
-        th:last-of-type
-          padding-right: 0
-
-        td
-          padding: 5px 10px 5px 0
-          max-width: 300px
-          overflow: hidden
-          text-overflow: ellipsis
-
-          button
-            background: $bgcolor
-            padding: 4px 8px
-            border: 2px solid $darkcolor
-            border-radius: 8px
-            font-weight: bold
-          
-          button:hover
-            background: rgba($darkcolor, 0.4)
-
-        .centered
-          padding-left: 20px
-
-        textarea
-          font-style: italic
-          resize: none
-          width: 80%
-          height: 100%
-          background: $bgcolor
-          border: none
-
-      .taskDone
-        opacity: 50%
 
   .allProjectsContainer
     display: grid
@@ -333,6 +281,12 @@ body
         .projTitle
           font-size: 1.4rem
           font-weight: bold   
+
+        .projDescription
+          height: 100%
+          overflow-wrap: break-word
+          text-overflow: ellipsis
+          font-style: italic
 
         .removeProjButton 
           position: absolute

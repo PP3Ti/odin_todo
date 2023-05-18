@@ -1,7 +1,6 @@
-import logic from "."
+import {logic, updateLocalStorage} from "./index"
 
 function updateTable() {
-    console.log('updateTable called')
     //get DOM element
     const tableToUpdate = document.getElementById('displayTasksTable')
     //clear element
@@ -20,7 +19,6 @@ function updateTable() {
     tableToUpdate.replaceWith(table)
 }
 function makeTasksTable(proj) {
-    console.log('makeTasksTable called')
     //create DOM elements for HTML table header
     const displayTasksTable = document.createElement('table')
     displayTasksTable.setAttribute('id', 'displayTasksTable')
@@ -44,7 +42,8 @@ function makeTasksTable(proj) {
 
     // loop through the tasks array and create a table row for each if belongs to current project
     for (let i = 0; i < logic.tasks.length; i++) {
-        if (logic.tasks[i].project == proj.title) {
+        if (logic.tasks[i].project == proj.title) {  
+            //create elements
             const row = document.createElement('tr')
             const title = document.createElement('td')
             const description = document.createElement('td')
@@ -52,11 +51,10 @@ function makeTasksTable(proj) {
             const priority = document.createElement('td')
             const done = document.createElement('td')
             const remove = document.createElement('td')
-    
             const removeButton = document.createElement('button')
             const descriptionArea = document.createElement('textarea')
             const checkbox = document.createElement('input')
-    
+            // add text content to elemetns
             title.textContent = logic.tasks[i].title
             descriptionArea.textContent = logic.tasks[i].description
             descriptionArea.readOnly = true
@@ -64,7 +62,7 @@ function makeTasksTable(proj) {
             priority.textContent = logic.tasks[i].priority
             removeButton.textContent = 'X'
             checkbox.type = 'checkbox'
-        
+            // event listener to grey out tasks that are done
             checkbox.addEventListener('input', () => {
                 if (checkbox.checked) {
                     checkbox.parentElement.parentElement.classList.add('taskDone')
@@ -74,9 +72,11 @@ function makeTasksTable(proj) {
                     logic.tasks[i].done = false
                 }
             })
+            // event listener to remove task from logic and local storage
             removeButton.addEventListener('click', () => {
                 removeButton.parentElement.parentElement.remove()
                 logic.tasks.splice(i, 1)
+                updateLocalStorage()
             })
     
             done.classList.add('centered')
@@ -184,7 +184,6 @@ function createProjectsTab() {
     function renderProjectCards() {
         // clear DOM
         displayProjectsDiv.replaceChildren()
-        console.log('renderProjectCards called')
         // loop through projects and create card for all
         for (let i = 0; i < logic.projects.length; i++) {
             const proj = document.createElement('div')
@@ -206,10 +205,18 @@ function createProjectsTab() {
             removeProjButton.addEventListener('click', (e) => {
                 e.preventDefault()
                 removeProjButton.parentElement.remove()
-                console.log('before ', logic.projects)
+                //remove all tasks of prject
+                for (let j = 0; j < logic.tasks.length; j++) {
+                    if (logic.projects[i].title == logic.tasks[j].project) {
+                        logic.tasks.splice(j, 1)
+                    }
+                }
+                //remove project from logic
                 logic.projects.splice(i, 1)
-                console.log('after ', logic.projects)
+                //re-render page
                 renderProjectCards()
+                // remove project from local storage
+                updateLocalStorage()
             })
             // append elements do DOM
             proj.append(projTitle, projDescription, removeProjButton)
@@ -225,5 +232,4 @@ function createProjectsTab() {
     projectsContainer.append(projectsTitle, displayProjectsDiv, addSign)
     contentDiv.appendChild(projectsContainer)
 }
-
 export {createProjectsTab, updateTable}

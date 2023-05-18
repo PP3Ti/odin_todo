@@ -1,6 +1,7 @@
 import './styles.sass'
-import createAllTasksTab from './allTasks'
+import {createAllTasksTab} from './allTasks'
 import {createProjectsTab, updateTable} from './projects'
+
 // get buttons from hero 
 const allTasks = document.getElementById('allTasks')  // main hero buttons
 const today = document.getElementById('today')
@@ -18,31 +19,33 @@ const addTaskButton = document.getElementById('addTaskButton')
 const cancelTaskButton = document.getElementById('cancelTaskButton')
 // store tasks and projects
 const logic = (() => {
-    let tasks = [
-        {
-            title: 'First task',
-            description: 'some general text',
-            date: '2023-06-02',
-            priority: 'low',
-            done: false,
-            project: 'default proj'
-        }
-    ]
-    let projects = [
-        {
-        title: 'default proj',
-        description: 'some text'
-        }
-    ]
+    let tasks = []
+    let projects = []
     return {
         tasks,
         projects
     }
 })()
-export default logic
+// updates local storage
+function updateLocalStorage() {
+    window.localStorage.clear()
+    localStorage.setItem('tasks', JSON.stringify(logic.tasks))
+    localStorage.setItem('projects', JSON.stringify(logic.projects))
+}
+// get local storage data on first load
+const getDataFromLocalStorage = (() => {
+    if (JSON.parse(localStorage.getItem('tasks') != null)) {
+        logic.tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    if (JSON.parse(localStorage.getItem('projects') != null)) {
+        logic.projects = JSON.parse(localStorage.getItem('projects'))
+    }
+})()
 // add event listeners for hero buttons to display correct pages
 allTasks.addEventListener('click', createAllTasksTab)
 projects.addEventListener('click', createProjectsTab)
+today.addEventListener('click', createTodayTab)
+weekly.addEventListener('click', createWeeklyTab)
 // event listeners for modal buttons
 addProjectButton.addEventListener('click', (e) => {
     // prevent reload from submitting
@@ -58,6 +61,7 @@ addProjectButton.addEventListener('click', (e) => {
     addProject.close()
     // reload page to display changes
     createProjectsTab()
+    updateLocalStorage()
 })
 cancelProjectButton.addEventListener('click', (e) => {
     e.preventDefault()
@@ -86,8 +90,11 @@ addTaskButton.addEventListener('click', (e) => {
     addTask.close()
     // reload page to display changes
     updateTable()
+    updateLocalStorage()
 })
 cancelTaskButton.addEventListener('click', (e) => {
     e.preventDefault()
     addTask.close()
 })
+
+export {logic, updateLocalStorage}
